@@ -38,8 +38,8 @@ use Illuminate\Support\Facades\Hash;
 |
 */
 
-Route::post('/tokens/create', function (Request $request) {
-    $request->validate([
+Route::post('tokens/create', function (Request $request) {
+     $request->validate([
         'email' => 'required|email',
         'password' => 'required'
     ]);
@@ -56,10 +56,11 @@ Route::post('/tokens/create', function (Request $request) {
         'token_type' => 'Bearer',
         'access_token' => $user->createToken('token_name')->plainTextToken // token name you can choose for your self or leave blank if you like to
     ]);
-});
+})->name('login');
 
-
-Route::apiResource('centros', CentroController::class);
+Route::middleware('auth:sanctum')->
+    apiResource('centros', CentroController::class)
+;
 
 Route::apiResource('matriculas', MatriculaController::class);
 
@@ -78,6 +79,8 @@ Route::apiResource('faltas_profesores', falta_profesorController::class)
 Route::apiResource('grupos', GrupoController::class);
 
 Route::apiResource('tutorizados', TutorizadoController::class);
+
+
 
 Route::apiResource('materias', MateriaController::class);
 
@@ -104,5 +107,3 @@ Route::any('/{any}', function (ServerRequestInterface $request) {
     $response = $api->handle($request);
     return $response;
 })->where('any', '.*');
-
-
