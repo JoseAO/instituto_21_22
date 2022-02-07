@@ -78,7 +78,7 @@ class CentroPolicy
      */
     public function delete(User $user, Centro $centro)
     {
-        return true; //$user->id === $centro->coordinador;
+        return true; // === $centro->proveedor;
     }
 
     /**
