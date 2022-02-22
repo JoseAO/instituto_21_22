@@ -16,7 +16,7 @@ class MateriaController extends Controller
      */
     public function index()
     {
-        return MateriaResource::collection(Materia::paginate());
+        return MateriaResource::collection(Materia::paginate(20));
     }
 
     /**
