@@ -67,4 +67,8 @@ class User extends Authenticatable
         return $this->hasMany(Nota::class, 'user_id');
     }
 
+    public function cursos()
+    {
+        return $this->belongsToMany(Curso::class, 'curso_id');
+    }
 }

@@ -73,7 +73,7 @@ Route::apiResource('niveles', NivelController::class)
     'niveles' => 'nivel'
 ]);
 
-
+Route::middleware('auth:sanctum')->apiResource('cursos', CursoController::class);
 
 Route::apiResource('faltas_profesores', falta_profesorController::class)
 ->parameters([

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -18,6 +19,14 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             NotaSeeder::class,
+        ]);
+
+        User::truncate();
+        $user = User::create([
+            'name' => 'Jose Arjona',
+            'email' => '1837071@alu.murciaeduca.es',
+            'password' => bcrypt('password'),
+            'usuario_av' => 11078,
         ]);
     }
 }
